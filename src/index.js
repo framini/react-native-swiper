@@ -91,7 +91,8 @@ const styles = {
 
   buttonText: {
     fontSize: 50,
-    color: '#007aff'
+    color: '#007aff',
+    fontFamily: 'Arial'
   }
 }
 
@@ -392,6 +393,8 @@ export default class extends Component {
    * @param  {string} dir    'x' || 'y'
    */
   updateIndex = (offset, dir, cb) => {
+    if (offset === undefined || this.internals === undefined || this.internals.offset === undefined) return;
+
     const state = this.state
     let index = state.index
     const diff = offset[dir] - this.internals.offset[dir]
