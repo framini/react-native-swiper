@@ -453,10 +453,12 @@ export default class extends Component {
    * Scroll by index
    * @param  {number} index offset index
    * @param  {bool} animated
+   * @param  {bool} force
    */
 
-  scrollBy = (index, animated = true) => {
-    if (this.internals.isScrolling || this.state.total < 2) return
+  scrollBy = (index, animated = true, force = false) => {
+    if ((this.internals.isScrolling || this.state.total < 2) && force === false) return;
+
     const state = this.state
     const diff = (this.props.loop ? 1 : 0) + index + this.state.index
     let x = 0
